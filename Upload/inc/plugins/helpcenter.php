@@ -14,7 +14,7 @@
  *
  *  MyBB Version: 1.8
  *
- *  Plugin Version: 1.6
+ *  Plugin Version: 1.7
  *
  ***************************************************************************/
  
@@ -83,7 +83,7 @@ function helpcenter_install()
 	
 	// add settings
 	$setting1 = array(
-		"sid"			=> NULL,
+		"sid"			=> 0,
 		"name"			=> "helpcenter_enabled",
 		"title"			=> "Is enabled?",
 		"description"	=> "Set to No to disable the Help Center.",
@@ -96,7 +96,7 @@ function helpcenter_install()
 	$db->insert_query("settings", $setting1);
 
 	$setting2 = array(
-		"sid"			=> NULL,
+		"sid"			=> 0,
 		"name"			=> "helpcenter_modgroups",
 		"title"			=> "Moderator User Groups",
 		"description"	=> "Enter the group id\'s (seperated by a comma) of the groups that can manage the Help Center.",
@@ -109,7 +109,7 @@ function helpcenter_install()
 	$db->insert_query("settings", $setting2);
 	
 	$setting3 = array(
-		"sid"			=> NULL,
+		"sid"			=> 0,
 		"name"			=> "helpcenter_newtickets_enabled",
 		"title"			=> "Allow new tickets?",
 		"description"	=> "Set to yes if you want users to be able to submit new support tickets. If set to no, a message will be shown informing the users about new ticket submissions being disabled.",
@@ -122,7 +122,7 @@ function helpcenter_install()
 	$db->insert_query("settings", $setting3);
 	
 	$setting4 = array(
-		"sid"			=> NULL,
+		"sid"			=> 0,
 		"name"			=> "helpcenter_docs_enabled",
 		"title"			=> "Help Docs Enabled?",
 		"description"	=> "Set to No if you want to disable help docs. Note: Help Center docs are not related to MyBB\'s help docs.",
@@ -135,7 +135,7 @@ function helpcenter_install()
 	$db->insert_query("settings", $setting4);
 	
 	$setting5 = array(
-		"sid"			=> NULL,
+		"sid"			=> 0,
 		"name"			=> "helpcenter_tickets_emailmode",
 		"title"			=> "Submit tickets to email?",
 		"description"	=> "Do you want to be emailed whenever a new ticket is submitted?",
@@ -148,7 +148,7 @@ function helpcenter_install()
 	$db->insert_query("settings", $setting5);
 	
 	$setting6 = array(
-		"sid"			=> NULL,
+		"sid"			=> 0,
 		"name"			=> "helpcenter_tickets_email",
 		"title"			=> "Support email",
 		"description"	=> "if the above setting is set to Yes, you must enter the email that receives new ticket submissions, here.",
@@ -180,7 +180,7 @@ function helpcenter_install()
 	  `tid` bigint(30) UNSIGNED NOT NULL default '0',
 	  `uid` bigint(30) UNSIGNED NOT NULL default '0',
 	  `date` bigint(30) UNSIGNED NOT NULL default '0',
-	  `message` TEXT NOT NULL default '',
+	  `message` TEXT NOT NULL,
 	  `first` smallint(1) UNSIGNED NOT NULL default '0',
 	  PRIMARY KEY  (`mid`)
 		) ENGINE=MyISAM");
@@ -214,7 +214,7 @@ function helpcenter_install()
 	  `did` bigint(30) UNSIGNED NOT NULL auto_increment,
 	  `name` varchar(300) NOT NULL default '',
 	  `description` varchar(300) NOT NULL default '',
-	  `content` TEXT NOT NULL default '',
+	  `content` TEXT NOT NULL,
 	  `cid` bigint(30) UNSIGNED NOT NULL default '0',
 	  PRIMARY KEY  (`did`)
 		) ENGINE=MyISAM");
@@ -245,7 +245,7 @@ function helpcenter_activate()
 
 	// add templates
 		$template = array(
-		"tid" => "NULL",
+		"tid" => "0",
 		"title" => "helpcenter_do_action",
 		"template" => $db->escape_string('
 <form action="{$mybb->settings[\'bburl\']}/helpcenter.php?action={$action}" method="POST">
@@ -268,7 +268,7 @@ function helpcenter_activate()
 	$db->insert_query("templates", $template);
 
 	$template = array(
-		"tid" => "NULL",
+		"tid" => "0",
 		"title" => "helpcenter_regular_helpdocs_doc",
 		"template" => $db->escape_string('
 
@@ -282,7 +282,7 @@ function helpcenter_activate()
 	$db->insert_query("templates", $template);
 
 	$template = array(
-		"tid" => "NULL",
+		"tid" => "0",
 		"title" => "helpcenter_regular",
 		"template" => $db->escape_string('
 
@@ -309,7 +309,7 @@ function helpcenter_activate()
 	$db->insert_query("templates", $template);
 
 	$template = array(
-		"tid" => "NULL",
+		"tid" => "0",
 		"title" => "helpcenter_helpdocs_cat",
 		"template" => $db->escape_string('
 
@@ -323,7 +323,7 @@ function helpcenter_activate()
 	$db->insert_query("templates", $template);
 
 	$template = array(
-		"tid" => "NULL",
+		"tid" => "0",
 		"title" => "helpcenter_manager_helpdocs_doc",
 		"template" => $db->escape_string('
 
@@ -338,7 +338,7 @@ function helpcenter_activate()
 	$db->insert_query("templates", $template);
 
 	$template = array(
-		"tid" => "NULL",
+		"tid" => "0",
 		"title" => "helpcenter_helpdocs_regular",
 		"template" => $db->escape_string('
 
@@ -358,7 +358,7 @@ function helpcenter_activate()
 	$db->insert_query("templates", $template);
 
 	$template = array(
-		"tid" => "NULL",
+		"tid" => "0",
 		"title" => "helpcenter_helpdocs_cats",
 		"template" => $db->escape_string('
 
@@ -379,7 +379,7 @@ function helpcenter_activate()
 	$db->insert_query("templates", $template);
 
 	$template = array(
-		"tid" => "NULL",
+		"tid" => "0",
 		"title" => "helpcenter_manager_newdoc",
 		"template" => $db->escape_string('
 <script type="text/javascript" src="jscripts/post.js?ver=1400"></script>
@@ -414,7 +414,7 @@ function helpcenter_activate()
 	$db->insert_query("templates", $template);
 	
 	$template = array(
-		"tid" => "NULL",
+		"tid" => "0",
 		"title" => "helpcenter_manager_editdoc",
 		"template" => $db->escape_string('
 <script type="text/javascript" src="jscripts/post.js?ver=1400"></script>
@@ -450,7 +450,7 @@ function helpcenter_activate()
 	$db->insert_query("templates", $template);
 
 	$template = array(
-		"tid" => "NULL",
+		"tid" => "0",
 		"title" => "helpcenter_do_action",
 		"template" => $db->escape_string('
 
@@ -474,7 +474,7 @@ function helpcenter_activate()
 	$db->insert_query("templates", $template);
 
 	$template = array(
-		"tid" => "NULL",
+		"tid" => "0",
 		"title" => "helpcenter_supportteam",
 		"template" => $db->escape_string('
 
@@ -494,7 +494,7 @@ function helpcenter_activate()
 	$db->insert_query("templates", $template);
 
 	$template = array(
-		"tid" => "NULL",
+		"tid" => "0",
 		"title" => "helpcenter_supportteam_group",
 		"template" => $db->escape_string('
 <tr>
@@ -505,7 +505,7 @@ function helpcenter_activate()
 	$db->insert_query("templates", $template);
 
 	$template = array(
-		"tid" => "NULL",
+		"tid" => "0",
 		"title" => "helpcenter_warning",
 		"template" => $db->escape_string('</p><div style="background: #FBEEF1; text-align: left; margin-left: 5px; padding: 13px 20px 13px 45px; border-top: 2px solid #FE8FA2; border-bottom: 2px solid #FE8FA2; line-height: 150%; margin-top: 5px; margin-bottom: 5px;">{$warningmsg}</div><p>'),
 		"sid" => "-1",
@@ -513,7 +513,7 @@ function helpcenter_activate()
 	$db->insert_query("templates", $template);
 
 	$template = array(
-		"tid" => "NULL",
+		"tid" => "0",
 		"title" => "helpcenter",
 		"template" => $db->escape_string('
 <html>
@@ -541,7 +541,7 @@ function helpcenter_activate()
 	$db->insert_query("templates", $template);
 
 	$template = array(
-		"tid" => "NULL",
+		"tid" => "0",
 		"title" => "helpcenter_manager",
 		"template" => $db->escape_string('
 
@@ -569,7 +569,7 @@ function helpcenter_activate()
 	$db->insert_query("templates", $template);
 
 	$template = array(
-		"tid" => "NULL",
+		"tid" => "0",
 		"title" => "helpcenter_manager_nav",
 		"template" => $db->escape_string('
 
@@ -582,6 +582,11 @@ function helpcenter_activate()
 	</td>
 </tr>
 <tbody style="{$collapsed[\'helpcentermanagement_e\']}" id="helpcentermanagement_e">
+
+    <tr><td class="trow1 smalltext"><a href="{$mybb->settings[\'bburl\']}/helpcenter.php?action=submitticket">{$lang->helpcenter_submit_ticket}</a></td></tr>
+    <tr><td class="trow1 smalltext"><a href="{$mybb->settings[\'bburl\']}/helpcenter.php?action=myopened">{$lang->helpcenter_yourtickets_opened}</a></td></tr>
+    <tr><td class="trow1 smalltext"><a href="{$mybb->settings[\'bburl\']}/helpcenter.php?action=myclosed">{$lang->helpcenter_yourtickets_closed}</a></td></tr>
+
 	<tr><td class="trow1 smalltext"><a href="{$mybb->settings[\'bburl\']}/helpcenter.php?action=manage_opened">{$lang->helpcenter_tickets_opened}</a></td></tr>
 	<tr><td class="trow1 smalltext"><a href="{$mybb->settings[\'bburl\']}/helpcenter.php?action=manage_closed">{$lang->helpcenter_tickets_closed}</a></td></tr>
 	<tr><td class="trow1 smalltext"><a href="{$mybb->settings[\'bburl\']}/helpcenter.php?action=supportteam">{$lang->helpcenter_support_team}</a></td></tr>
@@ -593,7 +598,7 @@ function helpcenter_activate()
 	$db->insert_query("templates", $template);
 
 	$template = array(
-		"tid" => "NULL",
+		"tid" => "0",
 		"title" => "helpcenter_nav",
 		"template" => $db->escape_string('
 
@@ -616,7 +621,7 @@ function helpcenter_activate()
 	$db->insert_query("templates", $template);
 
 	$template = array(
-		"tid" => "NULL",
+		"tid" => "0",
 		"title" => "helpcenter_helpdocs_manager",
 		"template" => $db->escape_string('
 
@@ -637,7 +642,7 @@ function helpcenter_activate()
 	$db->insert_query("templates", $template);
 
 	$template = array(
-		"tid" => "NULL",
+		"tid" => "0",
 		"title" => "helpcenter_not_found",
 		"template" => $db->escape_string('
 
@@ -651,7 +656,7 @@ function helpcenter_activate()
 	$db->insert_query("templates", $template);
 
 	$template = array(
-		"tid" => "NULL",
+		"tid" => "0",
 		"title" => "helpcenter_regular_nav",
 		"template" => $db->escape_string('
 
@@ -674,7 +679,7 @@ function helpcenter_activate()
 	$db->insert_query("templates", $template);
 
 	$template = array(
-		"tid" => "NULL",
+		"tid" => "0",
 		"title" => "helpcenter_manager_tickets_ticket",
 		"template" => $db->escape_string('
 
@@ -691,7 +696,7 @@ function helpcenter_activate()
 	$db->insert_query("templates", $template);
 
 	$template = array(
-		"tid" => "NULL",
+		"tid" => "0",
 		"title" => "helpcenter_regular_submitticket",
 		"template" => $db->escape_string('
 
@@ -730,7 +735,7 @@ function helpcenter_activate()
 	$db->insert_query("templates", $template);
 
 	$template = array(
-		"tid" => "NULL",
+		"tid" => "0",
 		"title" => "helpcenter_manager_tickets",
 		"template" => $db->escape_string('
 {$multipage}
@@ -753,7 +758,7 @@ function helpcenter_activate()
 	$db->insert_query("templates", $template);
 
 	$template = array(
-		"tid" => "NULL",
+		"tid" => "0",
 		"title" => "helpcenter_regular_tickets",
 		"template" => $db->escape_string('
 {$multipage}
@@ -774,7 +779,7 @@ function helpcenter_activate()
 	$db->insert_query("templates", $template);
 
 	$template = array(
-		"tid" => "NULL",
+		"tid" => "0",
 		"title" => "helpcenter_regular_tickets_ticket",
 		"template" => $db->escape_string('
 <tr>
@@ -788,7 +793,7 @@ function helpcenter_activate()
 	$db->insert_query("templates", $template);
 
 	$template = array(
-		"tid" => "NULL",
+		"tid" => "0",
 		"title" => "helpcenter_helpdocs_viewdoc",
 		"template" => $db->escape_string('
 <table border="0" cellspacing="{$theme[\'borderwidth\']}" cellpadding="{$theme[\'tablespace\']}" class="tborder">
@@ -813,7 +818,7 @@ function helpcenter_activate()
 	$db->insert_query("templates", $template);
 
 	$template = array(
-		"tid" => "NULL",
+		"tid" => "0",
 		"title" => "helpcenter_viewticket",
 		"template" => $db->escape_string('
 <table width="100%" border="0">
@@ -902,7 +907,7 @@ function helpcenter_activate()
 	$db->insert_query("templates", $template);
 
 	$template = array(
-		"tid" => "NULL",
+		"tid" => "0",
 		"title" => "helpcenter_reply",
 		"template" => $db->escape_string('
 <div align="center">
@@ -948,7 +953,7 @@ function helpcenter_deactivate()
 			continue;
 		echo '<pre>'.htmlspecialchars('
 	$template = array(
-		"tid" => "NULL",
+		"tid" => "0",
 		"title" => "'.$template['title'].'",
 		"template" => $db->escape_string(\'
 '.str_replace('\'', '\\\'', stripslashes($template['template'])).'\'),
@@ -1403,7 +1408,7 @@ function helpcenter_admin()
 				echo "<p>{$lang->helpcenter_confirm_deletecategory}</p>\n";
 				echo "<br />\n";
 				echo "<p class=\"buttons\">\n";
-				echo $form->generate_submit_button($lang->yes, array('class' => 'button_yes'));
+			    echo $form->generate_submit_button($lang->yes, array('class' => 'button_yes'));
 				echo $form->generate_submit_button($lang->no, array("name" => "no", 'class' => 'button_no'));
 				echo "</p>\n";
 				echo "</div>\n";
@@ -1474,16 +1479,16 @@ function helpcenter_admin()
 					'link'			=> 'index.php?module=tools-helpcenter&amp;action=addpriority',
 					'description'	=> $lang->helpcenter_priorities_add_desc
 				);
-				$sub_tabs['helpcenter_priorities_edit'] = array(
-					'title'			=> $lang->helpcenter_priorities_edit,
-					'link'			=> 'index.php?module=tools-helpcenter&amp;action=editpriority',
-					'description'	=> $lang->helpcenter_priorities_edit_desc
-				);
-				$sub_tabs['helpcenter_priorities_delete'] = array(
-					'title'			=> $lang->helpcenter_priorities_delete,
-					'link'			=> 'index.php?module=tools-helpcenter&amp;action=do_deletepriority',
-					'description'	=> $lang->helpcenter_priorities_delete_desc
-				);
+				//$sub_tabs['helpcenter_priorities_edit'] = array(
+				//	'title'			=> $lang->helpcenter_priorities_edit,
+				//	'link'			=> 'index.php?module=tools-helpcenter&amp;action=editpriority',
+				//	'description'	=> $lang->helpcenter_priorities_edit_desc
+				//);
+				//$sub_tabs['helpcenter_priorities_delete'] = array(
+				//	'title'			=> $lang->helpcenter_priorities_delete,
+				//	'link'			=> 'index.php?module=tools-helpcenter&amp;action=do_deletepriority',
+				//	'description'	=> $lang->helpcenter_priorities_delete_desc
+				//);
 			}
 			
 			$sub_tabs['helpcenter_helpcategories'] = array(
@@ -1499,16 +1504,16 @@ function helpcenter_admin()
 					'link'			=> 'index.php?module=tools-helpcenter&amp;action=addcategory',
 					'description'	=> $lang->helpcenter_helpcategories_add_desc
 				);
-				$sub_tabs['helpcenter_helpcategories_edit'] = array(
-					'title'			=> $lang->helpcenter_helpcategories_edit,
-					'link'			=> 'index.php?module=tools-helpcenter&amp;action=editcategory',
-					'description'	=> $lang->helpcenter_helpcategories_edit_desc
-				);
-				$sub_tabs['helpcenter_helpcategories_delete'] = array(
-					'title'			=> $lang->helpcenter_helpcategories_delete,
-					'link'			=> 'index.php?module=tools-helpcenter&amp;action=do_deletecategory',
-					'description'	=> $lang->helpcenter_helpcategories_delete_desc
-				);
+				//$sub_tabs['helpcenter_helpcategories_edit'] = array(
+				//	'title'			=> $lang->helpcenter_helpcategories_edit,
+				//	'link'			=> 'index.php?module=tools-helpcenter&amp;action=editcategory',
+				//	'description'	=> $lang->helpcenter_helpcategories_edit_desc
+				//);
+				//$sub_tabs['helpcenter_helpcategories_delete'] = array(
+				//	'title'			=> $lang->helpcenter_helpcategories_delete,
+				//	'link'			=> 'index.php?module=tools-helpcenter&amp;action=do_deletecategory',
+				//	'description'	=> $lang->helpcenter_helpcategories_delete_desc
+				//);
 			}
 			
 			$sub_tabs['helpcenter_ticketcategories'] = array(
@@ -1524,16 +1529,16 @@ function helpcenter_admin()
 					'link'			=> 'index.php?module=tools-helpcenter&amp;action=addticketcategory',
 					'description'	=> $lang->helpcenter_ticketcategories_add_desc
 				);
-				$sub_tabs['helpcenter_helpcategories_edit'] = array(
-					'title'			=> $lang->helpcenter_ticketcategories_edit,
-					'link'			=> 'index.php?module=tools-helpcenter&amp;action=editticketcategory',
-					'description'	=> $lang->helpcenter_ticketcategories_edit_desc
-				);
-				$sub_tabs['helpcenter_helpcategories_delete'] = array(
-					'title'			=> $lang->helpcenter_ticketcategories_delete,
-					'link'			=> 'index.php?module=tools-helpcenter&amp;action=do_deleteticketcategory',
-					'description'	=> $lang->helpcenter_ticketcategories_delete_desc
-				);
+				//$sub_tabs['helpcenter_helpcategories_edit'] = array(
+				//	'title'			=> $lang->helpcenter_ticketcategories_edit,
+				//	'link'			=> 'index.php?module=tools-helpcenter&amp;action=editticketcategory',
+				//	'description'	=> $lang->helpcenter_ticketcategories_edit_desc
+				//);
+				//$sub_tabs['helpcenter_helpcategories_delete'] = array(
+				//	'title'			=> $lang->helpcenter_ticketcategories_delete,
+				//	'link'			=> 'index.php?module=tools-helpcenter&amp;action=do_deleteticketcategory',
+				//	'description'	=> $lang->helpcenter_ticketcategories_delete_desc
+				//);
 			}
 		}
 		
@@ -1589,7 +1594,10 @@ function helpcenter_admin()
 			
 			$form_container->end();
 			
-			$buttons = "";
+			//$buttons = "";
+			$submit_options = array('name' => 'save');
+			$buttons = array();
+
 			$buttons[] = $form->generate_submit_button($lang->helpcenter_submit);
 			$buttons[] = $form->generate_reset_button($lang->helpcenter_reset);
 			$form->output_submit_wrapper($buttons);
@@ -1615,8 +1623,10 @@ function helpcenter_admin()
 			$form_container->output_row($lang->helpcenter_editpriority_format, htmlspecialchars_uni($lang->helpcenter_editpriority_format_desc), $form->generate_text_box('format', $priority['format'], array('id' => 'format')), 'format');
 			
 			$form_container->end();
-			
-			$buttons = "";
+
+			//$buttons = "";
+			$submit_options = array('name' => 'save');
+			$buttons = array();
 			$buttons[] = $form->generate_submit_button($lang->helpcenter_submit);
 			$buttons[] = $form->generate_reset_button($lang->helpcenter_reset);
 			$form->output_submit_wrapper($buttons);
@@ -1670,7 +1680,10 @@ function helpcenter_admin()
 	
 			$form_container->end();
 			
-			$buttons = "";
+			//$buttons = "";
+			$submit_options = array('name' => 'save');
+			$buttons = array();
+
 			$buttons[] = $form->generate_submit_button($lang->helpcenter_submit);
 			$buttons[] = $form->generate_reset_button($lang->helpcenter_reset);
 			$form->output_submit_wrapper($buttons);
@@ -1695,7 +1708,10 @@ function helpcenter_admin()
 			
 			$form_container->end();
 			
-			$buttons = "";
+			//$buttons = "";
+			$submit_options = array('name' => 'save');
+			$buttons = array();
+
 			$buttons[] = $form->generate_submit_button($lang->helpcenter_submit);
 			$buttons[] = $form->generate_reset_button($lang->helpcenter_reset);
 			$form->output_submit_wrapper($buttons);
@@ -1749,7 +1765,10 @@ function helpcenter_admin()
 	
 			$form_container->end();
 			
-			$buttons = "";
+			//$buttons = "";
+			$submit_options = array('name' => 'save');
+			$buttons = array();
+
 			$buttons[] = $form->generate_submit_button($lang->helpcenter_submit);
 			$buttons[] = $form->generate_reset_button($lang->helpcenter_reset);
 			$form->output_submit_wrapper($buttons);
@@ -1774,7 +1793,10 @@ function helpcenter_admin()
 			
 			$form_container->end();
 			
-			$buttons = "";
+			//$buttons = "";
+			$submit_options = array('name' => 'save');
+			$buttons = array();
+
 			$buttons[] = $form->generate_submit_button($lang->helpcenter_submit);
 			$buttons[] = $form->generate_reset_button($lang->helpcenter_reset);
 			$form->output_submit_wrapper($buttons);

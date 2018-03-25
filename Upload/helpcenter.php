@@ -15,7 +15,7 @@
  *
  *  MyBB Version: 1.8
  *
- *  Plugin Version: 1.1
+ *  Plugin Version: 1.7
  *
  ***************************************************************************/
  
@@ -35,8 +35,8 @@
 ****************************************************************************/
 
 define("IN_MYBB", 1);
-define('THIS_SCRIPT', 'mydownloads.php');
-define('IN_MYDOWNLOADS', 1);
+define('THIS_SCRIPT', 'helpcenter.php');
+define('IN_HELPCENTER', 1);
 
 // Templates used by Help Center
 $templatelist  = "helpcenter,helpcenter_regular,helpcenter_manager,helpcenter_do_action,helpcenter_regular_helpdocs_doc,helpcenter_regular,helpcenter_helpdocs_cat,helpcenter_manager_helpdocs_doc,helpcenter_helpdocs_regular,helpcenter_helpdocs_cats,helpcenter_manager_newdoc,helpcenter_manager_editdoc,helpcenter_do_action,helpcenter_supportteam,helpcenter_supportteam_group,helpcenter_warning,helpcenter,helpcenter_manager,helpcenter_manager_nav,helpcenter_nav,helpcenter_helpdocs_manager,helpcenter_not_found,helpcenter_regular_nav,helpcenter_manager_tickets_ticket,helpcenter_regular_submitticket,helpcenter_manager_tickets,helpcenter_regular_tickets,helpcenter_regular_tickets_ticket,helpcenter_helpdocs_viewdoc,helpcenter_regular_tickets,helpcenter_regular_tickets_ticket,helpcenter_viewticket,helpcenter_reply,";
@@ -115,8 +115,8 @@ if (!$mybb->input['action'])
 }
 elseif ($mybb->input['action'] == 'myopened' || $mybb->input['action'] == 'myclosed')
 {
-	if ($manager)
-		error_no_permission();
+	//if ($manager)
+	//	error_no_permission();
 		
 	if ($mybb->input['action'] == 'myopened')
 	{
@@ -744,8 +744,8 @@ elseif ($mybb->input['action'] == 'submitticket')
 	// Add link in breadcrumb
 	add_breadcrumb($lang->helpcenter_breadcrumb_submit_ticket, "helpcenter.php?action=submitticket");
 
-	if ($manager) // managers cannot submit tickets
-		error_no_permission();
+	//if ($manager) // managers cannot submit tickets
+	//	error_no_permission();
 
 	if ($mybb->settings['helpcenter_newtickets_enabled'] == 0)
 	{
@@ -795,8 +795,8 @@ elseif ($mybb->input['action'] == 'submitticket')
 }
 elseif ($mybb->input['action'] == 'do_submitticket')
 {
-	if ($manager) // managers cannot submit tickets
-		error_no_permission();
+	//if ($manager) // managers cannot submit tickets
+	//	error_no_permission();
 
 	if ($mybb->settings['helpcenter_newtickets_enabled'] == 0)
 	{

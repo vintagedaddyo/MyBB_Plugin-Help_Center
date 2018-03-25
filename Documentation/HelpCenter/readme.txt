@@ -5,9 +5,22 @@ Website: http://mybb-plugins.com
 
 License: license.txt
 
+* Updated to 1.7 for MyBB 1.8.x 
+
+by:  Vintagedaddyo: http://community.mybb.com/user-6029.html
+
+- Fixed issues where in the previous version it could only be installed by disabling MySQL strict mode
+- Minor changes to the frontend to improve user navigation 
+
+
+
+
 * Updated to 1.6 for MyBB 1.8.x 
 
 by:  Vintagedaddyo: http://community.mybb.com/user-6029.html
+
+
+- Currently can only currently be installed by disabling MySQL strict mode
 
 ----- Description
 
@@ -55,6 +68,9 @@ Upload contents of the Upload folder to the root of your MyBB installation, over
 Done!
 
 ------ Change Log
+ * 1.7 by: Vintagedaddyo
+Fixed a few minor issues.
+Updated version to work with later 1.8.x
 
  * 1.6 by: Vintagedaddyo
 Fixed a few minor issues.

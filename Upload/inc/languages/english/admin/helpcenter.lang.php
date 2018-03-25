@@ -14,7 +14,7 @@
  *
  *  MyBB Version: 1.8
  *
- *  Plugin Version: 1.6
+ *  Plugin Version: 1.7
  *
  ***************************************************************************/
 
@@ -40,12 +40,45 @@ $l['helpcenter_Desc'] = 'Adds a powerful Help Center to MyBB.';
 $l['helpcenter_Web'] = 'http://mybb-plugins.com';
 $l['helpcenter_Auth'] = 'Pirata Nervo & updated by Vintagedaddyo';
 $l['helpcenter_AuthSite'] = 'http://community.mybb.com/user-6029.html';
-$l['helpcenter_Ver'] = '1.6';
+$l['helpcenter_Ver'] = '1.7';
 $l['helpcenter_Compat'] = '18*';
 
 
 $l['helpcenter'] = 'Help Center';
 $l['helpcenter_index'] = 'Help Center';
+
+$l['helpcenter_option_0_Title'] = 'Help Center';
+$l['helpcenter_option_0_Description'] = 'Settings for Help Center';
+
+$l['helpcenter_option_1_Title'] = 'Is enabled?';
+$l['helpcenter_option_1_Description'] = 'Set to No to disable the Help Center.';
+
+$l['helpcenter_option_2_Title'] = 'Moderator User Groups';
+$l['helpcenter_option_2_Description'] = 'Enter the group id\'s (seperated by a comma) of the groups that can manage the Help Center.';
+
+$l['helpcenter_option_3_Title'] = 'Allow new tickets?';
+$l['helpcenter_option_3_Description'] = 'Set to yes if you want users to be able to submit new support tickets. If set to no, a message will be shown informing the users about new ticket submissions being disabled.';
+
+$l['helpcenter_option_4_Title'] = 'Help Docs Enabled?';
+$l['helpcenter_option_4_Description'] = 'Set to No if you want to disable help docs. Note: Help Center docs are not related to MyBB\'s help docs.';
+
+$l['helpcenter_option_5_Title'] = 'Submit tickets to email?';
+$l['helpcenter_option_5_Description'] = 'Do you want to be emailed whenever a new ticket is submitted?';
+
+$l['helpcenter_option_6_Title'] = 'Support email';
+$l['helpcenter_option_6_Description'] = 'if the above setting is set to Yes, you must enter the email that receives new ticket submissions, here.';
+
+$l['helpcenter_priority_1_Name'] = 'Low';
+$l['helpcenter_priority_1_Description'] = 'Does not require immediate support.';
+$l['helpcenter_priority_1_Format'] = '<span style="color: #F5B800;">{priority}</span>';
+
+$l['helpcenter_priority_2_Name'] = 'Medium';
+$l['helpcenter_priority_2_Description'] = 'Does not require immediate support, however support should be given once possible.';
+$l['helpcenter_priority_2_Format'] = '<span style="color: #F53D00;">{priority}</span>';
+
+$l['helpcenter_priority_3_Name'] = 'High';
+$l['helpcenter_priority_3_Description'] = 'Requires immediate support.';
+$l['helpcenter_priority_3_Format'] = '<span style="color: #990000;">{priority}</span>';
 
 // Tabs
 $l['helpcenter_priorities'] = 'Priorities';

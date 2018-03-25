@@ -14,7 +14,7 @@
  *
  *  MyBB Version: 1.8
  *
- *  Plugin Version: 1.6
+ *  Plugin Version: 1.7
  *
  ***************************************************************************/
  
@@ -33,17 +33,6 @@
 	along with this program.  If not, see <http://www.gnu.org/licenses/>.
 ****************************************************************************/
 
-// plugin_info
-
-$l['helpcenter_Name'] = 'Help Center';
-$l['helpcenter_Desc'] = 'Adds a powerful Help Center to MyBB.';
-$l['helpcenter_Web'] = 'http://mybb-plugins.com';
-$l['helpcenter_Auth'] = 'Pirata Nervo & updated by Vintagedaddyo';
-$l['helpcenter_AuthSite'] = 'http://community.mybb.com/user-6029.html';
-$l['helpcenter_Ver'] = '1.6';
-$l['helpcenter_Compat'] = '18*';
-
-
 $l['helpcenter'] = 'Help Center';
 $l['helpcenter_disabled'] = 'The Help Center has been disabled by the administrator.';
 $l['helpcenter_newtickets_disabled'] = 'New tickets have been disabled by the administrator.';
@@ -60,8 +49,10 @@ $l['helpcenter_no_categories'] = 'The administrator hasn\'t created any categori
 $l['helpcenter_invalid_document'] = 'You have selected an invalid document.';
 
 $l['helpcenter_yourtickets'] = 'Your tickets:';
-$l['helpcenter_yourtickets_opened'] = 'Opened tickets';
-$l['helpcenter_yourtickets_closed'] = 'Closed tickets';
+//$l['helpcenter_yourtickets_opened'] = 'Opened tickets';
+//$l['helpcenter_yourtickets_closed'] = 'Closed tickets';
+$l['helpcenter_yourtickets_opened'] = 'Your Opened tickets';
+$l['helpcenter_yourtickets_closed'] = 'Your Closed tickets';
 $l['helpcenter_submit_ticket'] = 'Submit a ticket';
 $l['helpcenter_help_docs'] = 'Help Docs';
 $l['helpcenter_support'] = 'Support';
