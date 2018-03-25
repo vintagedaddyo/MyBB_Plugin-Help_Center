@@ -74,8 +74,8 @@ function helpcenter_install()
 	// create settings group
 	$insertarray = array(
 		'name' => 'helpcenter', 
-		'title' => 'Help Center', 
-		'description' => "Settings for Help Center", 
+		'title' => ''.$lang->helpcenter_option_0_Title.'', 
+		'description' => ''.$lang->helpcenter_option_0_Description.'', 
 		'disporder' => 100, 
 		'isdefault' => 0
 	);
@@ -85,8 +85,8 @@ function helpcenter_install()
 	$setting1 = array(
 		"sid"			=> 0,
 		"name"			=> "helpcenter_enabled",
-		"title"			=> "Is enabled?",
-		"description"	=> "Set to No to disable the Help Center.",
+		"title"         => ''.$lang->helpcenter_option_1_Title.'', 
+		"description"   => ''.$lang->helpcenter_option_1_Description.'', 
 		"optionscode"	=> "yesno",
 		"value"			=> "1",
 		"disporder"		=> 1,
@@ -98,8 +98,8 @@ function helpcenter_install()
 	$setting2 = array(
 		"sid"			=> 0,
 		"name"			=> "helpcenter_modgroups",
-		"title"			=> "Moderator User Groups",
-		"description"	=> "Enter the group id\'s (seperated by a comma) of the groups that can manage the Help Center.",
+		"title"         => ''.$lang->helpcenter_option_2_Title.'', 
+		"description"   => ''.$lang->helpcenter_option_2_Description.'', 
 		"optionscode"	=> "text",
 		"value"			=> "4",
 		"disporder"		=> 2,
@@ -111,8 +111,8 @@ function helpcenter_install()
 	$setting3 = array(
 		"sid"			=> 0,
 		"name"			=> "helpcenter_newtickets_enabled",
-		"title"			=> "Allow new tickets?",
-		"description"	=> "Set to yes if you want users to be able to submit new support tickets. If set to no, a message will be shown informing the users about new ticket submissions being disabled.",
+		"title"         => ''.$lang->helpcenter_option_3_Title.'', 
+		"description"   => ''.$lang->helpcenter_option_3_Description.'', 
 		"optionscode"	=> "yesno",
 		"value"			=> "1",
 		"disporder"		=> 3,
@@ -124,8 +124,8 @@ function helpcenter_install()
 	$setting4 = array(
 		"sid"			=> 0,
 		"name"			=> "helpcenter_docs_enabled",
-		"title"			=> "Help Docs Enabled?",
-		"description"	=> "Set to No if you want to disable help docs. Note: Help Center docs are not related to MyBB\'s help docs.",
+		"title"         => ''.$lang->helpcenter_option_4_Title.'', 
+		"description"   => ''.$lang->helpcenter_option_4_Description.'', 
 		"optionscode"	=> "yesno",
 		"value"			=> "1",
 		"disporder"		=> 4,
@@ -137,8 +137,8 @@ function helpcenter_install()
 	$setting5 = array(
 		"sid"			=> 0,
 		"name"			=> "helpcenter_tickets_emailmode",
-		"title"			=> "Submit tickets to email?",
-		"description"	=> "Do you want to be emailed whenever a new ticket is submitted?",
+		"title"         => ''.$lang->helpcenter_option_5_Title.'', 
+		"description"   => $lang->helpcenter_option_5_Description, 
 		"optionscode"	=> "yesno",
 		"value"			=> "0",
 		"disporder"		=> 5,
@@ -150,8 +150,8 @@ function helpcenter_install()
 	$setting6 = array(
 		"sid"			=> 0,
 		"name"			=> "helpcenter_tickets_email",
-		"title"			=> "Support email",
-		"description"	=> "if the above setting is set to Yes, you must enter the email that receives new ticket submissions, here.",
+		"title"         => ''.$lang->helpcenter_option_6_Title.'', 
+		"description"   => ''.$lang->helpcenter_option_6_Description.'', 
 		"optionscode"	=> "text",
 		"value"			=> "",
 		"disporder"		=> 6,
@@ -219,13 +219,13 @@ function helpcenter_install()
 	  PRIMARY KEY  (`did`)
 		) ENGINE=MyISAM");
 	
-	$insert_query = array('name' => 'Low', 'description' => 'Does not require immediate support.', 'level' => '1', 'format' => '<span style="color: #F5B800;">{priority}</span>');
+	$insert_query = array('name' => ''.$lang->helpcenter_priority_1_Name.'', 'description' => ''.$lang->helpcenter_priority_1_Description.'', 'level' => '1', 'format' => ''.$lang->helpcenter_priority_1_Format.'');
 	$db->insert_query('helpcenter_priorities', $insert_query);
 
-	$insert_query = array('name' => 'Medium', 'description' => 'Does not require immediate support, however support should be given once possible.', 'level' => '2', 'format' => '<span style="color: #F53D00;">{priority}</span>');
+	$insert_query = array('name' => ''.$lang->helpcenter_priority_2_Name.'', 'description' => ''.$lang->helpcenter_priority_2_Description.'', 'level' => '2', 'format' => ''.$lang->helpcenter_priority_2_Format.'');
 	$db->insert_query('helpcenter_priorities', $insert_query);
 	
-	$insert_query = array('name' => 'High', 'description' => 'Requires immediate support.', 'level' => '3', 'format' => '<span style="color: #990000;">{priority}</span>');
+	$insert_query = array('name' => ''.$lang->helpcenter_priority_3_Name.'', 'description' => ''.$lang->helpcenter_priority_3_Description.'', 'level' => '3', 'format' => ''.$lang->helpcenter_priority_3_Format.'');
 	$db->insert_query('helpcenter_priorities', $insert_query);
 	
 }
