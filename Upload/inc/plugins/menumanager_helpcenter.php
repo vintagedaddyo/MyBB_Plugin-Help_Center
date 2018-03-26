@@ -62,7 +62,7 @@ function menumanager_helpcenter_install()
 	// Portal
 	$db->write_query("INSERT IGNORE INTO ".TABLE_PREFIX."menumanager_helpcenter
 	(id,title,link,icon,id_order)
-	VALUES('1','Portal','\$mybburl/search.php','\$mybburl/inc/plugins/menumanager_helpcenter/images/toplinks/portal.png',1)");
+	VALUES('1','Portal','\$mybburl/portal.php','\$mybburl/inc/plugins/menumanager_helpcenter/images/toplinks/portal.png',1)");
 
 
 	// Search
