@@ -1,7 +1,7 @@
 <?php
 /***************************************************************************
  *
- *  Help Center plugin (inc/languages/english/helpcenter.lang.php)
+ *  Help Center plugin (inc/languages/espanol/helpcenter.lang.php)
  *  Authors: Pirata Nervo, Vintagedaddyo
  *  Copyright: © 2009-2010 Pirata Nervo
  *  Website: http://mybb-plugins.com
