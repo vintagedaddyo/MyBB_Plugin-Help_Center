@@ -10,7 +10,14 @@ License: license.txt
 by:  Vintagedaddyo: http://community.mybb.com/user-6029.html
 
 - Fixed issues where in the previous version it could only be installed by disabling MySQL strict mode
+
 - Minor changes to the frontend to improve user navigation 
+
+* further localization support
+
+- english
+- englishgb
+- espanol
 
 
 
