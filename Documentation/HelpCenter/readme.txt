@@ -18,7 +18,8 @@ by:  Vintagedaddyo: http://community.mybb.com/user-6029.html
 - english
 - englishgb
 - espanol
-
+- french
+- italiano
 
 
 
