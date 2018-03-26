@@ -66,7 +66,7 @@ $l['helpcenter_option_5_Title'] = 'Invia i biglietti per email?';
 $l['helpcenter_option_5_Description'] = "Vuoi essere inviato via email ogni volta che viene inviato un nuovo ticket?";
 
 $l['helpcenter_option_6_Title'] = 'Email di supporto';
-$l['helpcenter_option_6_Description'] = "se l'impostazione sopra è impostata su Sì, è necessario inserire l'email che riceve i nuovi ticket di invio, qui.";
+$l['helpcenter_option_6_Description'] = "se l impostazione sopra è impostata su Sì, è necessario inserire l email che riceve i nuovi ticket di invio, qui.";
 
 $l['helpcenter_priority_1_Name'] = 'Basso';
 $l['helpcenter_priority_1_Description'] = 'Non richiede supporto immediato.';

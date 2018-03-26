@@ -47,23 +47,23 @@ $l['helpcenter_Compat'] = '18*';
 $l['helpcenter'] = 'Centre d\'aide';
 $l['helpcenter_index'] = 'Centre d\'aide';
 
-$l['helpcenter_option_0_Title'] = 'Centre d\'aide';
-$l['helpcenter_option_0_Description'] = 'Paramètres du centre d\'aide';
+$l['helpcenter_option_0_Title'] = 'Centre d aide';
+$l['helpcenter_option_0_Description'] = 'Paramètres du centre d aide';
 
 $l['helpcenter_option_1_Title'] = 'Est-ce activé?';
-$l['helpcenter_option_1_Description'] = 'Définissez sur Non pour désactiver le centre d\'aide.';
+$l['helpcenter_option_1_Description'] = 'Définissez sur Non pour désactiver le centre d aide.';
 
-$l['helpcenter_option_2_Title'] = 'Groupes d\'utilisateurs du modérateur';
-$l['helpcenter_option_2_Description'] = "Entrez les identifiants de groupes (séparés par une virgule) des groupes pouvant gérer le centre d'aide.";
+$l['helpcenter_option_2_Title'] = 'Groupes d utilisateurs du modérateur';
+$l['helpcenter_option_2_Description'] = "Entrez les identifiants de groupes (séparés par une virgule) des groupes pouvant gérer le centre d aide.";
 
 $l['helpcenter_option_3_Title'] = 'Autoriser de nouveaux tickets?';
-$l['helpcenter_option_3_Description'] = "Définissez sur yes si vous souhaitez que les utilisateurs puissent soumettre de nouveaux tickets de support. Si ce paramètre est défini sur no, un message s'affiche pour informer les utilisateurs de la désactivation des nouvelles soumissions de tickets.";
+$l['helpcenter_option_3_Description'] = "Définissez sur yes si vous souhaitez que les utilisateurs puissent soumettre de nouveaux tickets de support. Si ce paramètre est défini sur no, un message s affiche pour informer les utilisateurs de la désactivation des nouvelles soumissions de tickets.";
 
 $l['helpcenter_option_4_Title'] = 'Aidez Docs Activé?';
-$l['helpcenter_option_4_Description'] = "Définissez sur Non si vous souhaitez désactiver les documents d'aide. Remarque: les documents du centre d'aide ne sont pas liés aux documents d'aide de MyBBs.";
+$l['helpcenter_option_4_Description'] = "Définissez sur Non si vous souhaitez désactiver les documents d aide. Remarque: les documents du centre d aide ne sont pas liés aux documents d aide de MyBBs.";
 
 $l['helpcenter_option_5_Title'] = 'Soumettre des billets à envoyer par courriel?';
-$l['helpcenter_option_5_Description'] = "Voulez-vous recevoir un e-mail chaque fois qu'un nouveau ticket est envoyé?";
+$l['helpcenter_option_5_Description'] = "Voulez-vous recevoir un e-mail chaque fois qu un nouveau ticket est envoyé?";
 
 $l['helpcenter_option_6_Title'] = 'Email de support';
 $l['helpcenter_option_6_Description'] = "Si le paramètre ci-dessus est défini sur Oui, vous devez entrer le courrier électronique qui reçoit les nouvelles soumissions de ticket, ici.";
