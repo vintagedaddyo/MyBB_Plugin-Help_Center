@@ -382,7 +382,7 @@ function helpcenter_activate()
 		"tid" => "0",
 		"title" => "helpcenter_manager_newdoc",
 		"template" => $db->escape_string('
-<script type="text/javascript" src="jscripts/post.js?ver=1400"></script>
+<script type="text/javascript" src="jscripts/post.js?ver=1813"></script>
 <form action="{$mybb->settings[\'bburl\']}/helpcenter.php?action=do_createdoc" method="POST">
 <input type="hidden" name="postcode" value="{$mybb->post_code}" />
 <table border="0" cellspacing="{$theme[\'borderwidth\']}" cellpadding="{$theme[\'tablespace\']}" class="tborder">
@@ -417,7 +417,7 @@ function helpcenter_activate()
 		"tid" => "0",
 		"title" => "helpcenter_manager_editdoc",
 		"template" => $db->escape_string('
-<script type="text/javascript" src="jscripts/post.js?ver=1400"></script>
+<script type="text/javascript" src="jscripts/post.js?ver=1813"></script>
 <form action="{$mybb->settings[\'bburl\']}/helpcenter.php?action=do_editdoc" method="POST">
 <input type="hidden" name="postcode" value="{$mybb->post_code}" />
 <input type="hidden" name="did" value="{$doc[\'did\']}" />	
@@ -700,7 +700,7 @@ function helpcenter_activate()
 		"title" => "helpcenter_regular_submitticket",
 		"template" => $db->escape_string('
 
-
+<script type="text/javascript" src="jscripts/post.js?ver=1813"></script>
 <form action="{$mybb->settings[\'bburl\']}/helpcenter.php?action=do_submitticket" method="POST">
 <input type="hidden" name="postcode" value="{$mybb->post_code}" />
 <table border="0" cellspacing="{$theme[\'borderwidth\']}" cellpadding="{$theme[\'tablespace\']}" class="tborder">
@@ -717,9 +717,10 @@ function helpcenter_activate()
 <td class="trow2" width="20%"><strong>{$lang->helpcenter_ticket_priority}:</strong></td><td class="trow2" width="80%">{$priorities}</td>
 </tr>
 <tr>
-<td class="trow1" width="20%" valign="top"><strong>{$lang->helpcenter_tickets_message}:</strong></td>
+<td class="trow1" width="20%" valign="top"><strong>{$lang->helpcenter_tickets_message}:</strong>{$smilieinserter}</td>
 <td class="trow1" width="80%">
 <textarea name="message" id="message" rows="20" cols="70" tabindex="2"></textarea>
+{$codebuttons}
 </td>
 </tr>
 <tr>
@@ -1595,9 +1596,8 @@ function helpcenter_admin()
 			$form_container->end();
 			
 			//$buttons = "";
-			$submit_options = array('name' => 'save');
+			//$submit_options = array('name' => 'save');
 			$buttons = array();
-
 			$buttons[] = $form->generate_submit_button($lang->helpcenter_submit);
 			$buttons[] = $form->generate_reset_button($lang->helpcenter_reset);
 			$form->output_submit_wrapper($buttons);
@@ -1625,7 +1625,7 @@ function helpcenter_admin()
 			$form_container->end();
 
 			//$buttons = "";
-			$submit_options = array('name' => 'save');
+			//$submit_options = array('name' => 'save');
 			$buttons = array();
 			$buttons[] = $form->generate_submit_button($lang->helpcenter_submit);
 			$buttons[] = $form->generate_reset_button($lang->helpcenter_reset);
@@ -1681,9 +1681,8 @@ function helpcenter_admin()
 			$form_container->end();
 			
 			//$buttons = "";
-			$submit_options = array('name' => 'save');
+			//$submit_options = array('name' => 'save');
 			$buttons = array();
-
 			$buttons[] = $form->generate_submit_button($lang->helpcenter_submit);
 			$buttons[] = $form->generate_reset_button($lang->helpcenter_reset);
 			$form->output_submit_wrapper($buttons);
@@ -1709,9 +1708,8 @@ function helpcenter_admin()
 			$form_container->end();
 			
 			//$buttons = "";
-			$submit_options = array('name' => 'save');
+			//$submit_options = array('name' => 'save');
 			$buttons = array();
-
 			$buttons[] = $form->generate_submit_button($lang->helpcenter_submit);
 			$buttons[] = $form->generate_reset_button($lang->helpcenter_reset);
 			$form->output_submit_wrapper($buttons);
@@ -1766,9 +1764,8 @@ function helpcenter_admin()
 			$form_container->end();
 			
 			//$buttons = "";
-			$submit_options = array('name' => 'save');
+			//$submit_options = array('name' => 'save');
 			$buttons = array();
-
 			$buttons[] = $form->generate_submit_button($lang->helpcenter_submit);
 			$buttons[] = $form->generate_reset_button($lang->helpcenter_reset);
 			$form->output_submit_wrapper($buttons);
@@ -1794,9 +1791,8 @@ function helpcenter_admin()
 			$form_container->end();
 			
 			//$buttons = "";
-			$submit_options = array('name' => 'save');
+			//$submit_options = array('name' => 'save');
 			$buttons = array();
-
 			$buttons[] = $form->generate_submit_button($lang->helpcenter_submit);
 			$buttons[] = $form->generate_reset_button($lang->helpcenter_reset);
 			$form->output_submit_wrapper($buttons);

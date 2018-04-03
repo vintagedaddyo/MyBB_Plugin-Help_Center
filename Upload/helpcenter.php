@@ -751,6 +751,11 @@ elseif ($mybb->input['action'] == 'submitticket')
 	{
 		error($lang->helpcenter_newtickets_disabled);
 	}
+
+// add bbcode/smilies to submitticket
+
+	$smilieinserter = build_clickable_smilies();
+	$codebuttons = build_mycode_inserter();
 	
 	$categories = '<select name="categories">
 <option value="0" selected=\"selected\">'.$lang->helpcenter_select_category.'</option>';
@@ -1059,6 +1064,7 @@ elseif ($mybb->input['action'] == 'viewticket')
 	);
 	
 	$query = $db->simple_select('helpcenter_messages', '*', "tid = $tid AND first = 0", array('order_by' => 'date', 'order_dir' => 'desc'));
+
 	while ($reply = $db->fetch_array($query))
 	{
 		$reply['number'] = ($total_replies+1)-$count;
@@ -1116,7 +1122,7 @@ elseif ($mybb->input['action'] == 'do_reply')
 
 	$ticket = $db->fetch_array($db->simple_select('helpcenter_tickets', '*', "tid = ".$tid));
 	$db->update_query('helpcenter_tickets', array('messages' => $ticket['messages']+1), 'tid=\''.$ticket['tid'].'\'');
-	
+
 	// inform author about the new reply if we are not the author
 	if ($manager)
 	{
