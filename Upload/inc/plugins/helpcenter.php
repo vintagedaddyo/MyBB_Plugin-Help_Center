@@ -71,7 +71,9 @@ function helpcenter_info()
 function helpcenter_install()
 {
 	global $db, $lang;
+
 	// create settings group
+
 	$insertarray = array(
 		'name' => 'helpcenter', 
 		'title' => ''.$lang->helpcenter_option_0_Title.'', 
@@ -82,6 +84,7 @@ function helpcenter_install()
 	$gid = $db->insert_query("settinggroups", $insertarray);
 	
 	// add settings
+
 	$setting1 = array(
 		"sid"			=> 0,
 		"name"			=> "helpcenter_enabled",
@@ -244,6 +247,7 @@ function helpcenter_activate()
 	global $db, $lang;
 
 	// add templates
+
 		$template = array(
 		"tid" => "0",
 		"title" => "helpcenter_do_action",
@@ -976,6 +980,7 @@ function helpcenter_deactivate()
 	exit;*/
 	
 	// delete templates
+
 	$db->delete_query('templates', 'title IN (\'helpcenter_do_action\',\'helpcenter_regular_helpdocs_doc\',\'helpcenter_regular\',\'helpcenter_helpdocs_cat\',\'helpcenter_manager_helpdocs_doc\',\'helpcenter_helpdocs_regular\',\'helpcenter_helpdocs_cats\',\'helpcenter_manager_newdoc\',\'helpcenter_manager_editdoc\',\'helpcenter_do_action\',\'helpcenter_supportteam\',\'helpcenter_supportteam_group\',\'helpcenter_warning\',\'helpcenter\',\'helpcenter_manager\',\'helpcenter_manager_nav\',\'helpcenter_nav\',\'helpcenter_helpdocs_manager\',\'helpcenter_not_found\',\'helpcenter_regular_nav\',\'helpcenter_manager_tickets_ticket\',\'helpcenter_regular_submitticket\',\'helpcenter_manager_tickets\',\'helpcenter_regular_tickets\',\'helpcenter_regular_tickets_ticket\',\'helpcenter_helpdocs_viewdoc\',\'helpcenter_regular_tickets\',\'helpcenter_regular_tickets_ticket\',\'helpcenter_viewticket\',\'helpcenter_reply\')');
 }
 	
@@ -984,9 +989,11 @@ function helpcenter_uninstall()
 	global $db, $mybb;
 	
 	// delete settings group
+
 	$db->delete_query("settinggroups", "name = 'helpcenter'");
 
 	// remove settings
+
 	$db->delete_query('settings', 'name IN (\'helpcenter_enabled\',\'helpcenter_modgroups\',\'helpcenter_newtickets_enabled\',\'helpcenter_docs_enabled\',\'helpcenter_tickets_emailmode\',\'helpcenter_tickets_email\')');
 
 	rebuild_settings();
@@ -1034,7 +1041,9 @@ function helpcenter_check_permissions($groups_comma)
 	$add_groups = explode(",", $mybb->user['additionalgroups']);
 	
 	if (!in_array($mybb->user['usergroup'], $groups)) { // primary user group not allowed
+
 		// check additional groups
+
 		if ($add_groups) {
 			if (count(array_intersect($add_groups, $groups)) == 0)
 				return false;
@@ -1394,9 +1403,11 @@ function helpcenter_admin()
 				}
 				
 				// delete documents assigned to this category
+
 				$db->delete_query('helpcenter_docs', "cid = $cid");
 				
 				// delete category
+
 				$db->delete_query('helpcenter_docs_cat', "cid = $cid");
 				
 				helpcenter_messageredirect($lang->helpcenter_category_deleted, 0, 'helpcategories');
@@ -1438,9 +1449,11 @@ function helpcenter_admin()
 				}
 				
 				// delete tickets within this category
+
 				$db->delete_query('helpcenter_tickets', "cid = $cid");
 				
 				// delete category
+
 				$db->delete_query('helpcenter_categories', "cid = $cid");
 				
 				helpcenter_messageredirect($lang->helpcenter_category_deleted, 0, 'ticketcategories');
@@ -1595,8 +1608,8 @@ function helpcenter_admin()
 			
 			$form_container->end();
 			
-			//$buttons = "";
-			//$submit_options = array('name' => 'save');
+			// buttons
+
 			$buttons = array();
 			$buttons[] = $form->generate_submit_button($lang->helpcenter_submit);
 			$buttons[] = $form->generate_reset_button($lang->helpcenter_reset);
@@ -1624,8 +1637,8 @@ function helpcenter_admin()
 			
 			$form_container->end();
 
-			//$buttons = "";
-			//$submit_options = array('name' => 'save');
+			// buttons
+
 			$buttons = array();
 			$buttons[] = $form->generate_submit_button($lang->helpcenter_submit);
 			$buttons[] = $form->generate_reset_button($lang->helpcenter_reset);
@@ -1637,6 +1650,7 @@ function helpcenter_admin()
 			$page->output_nav_tabs($sub_tabs, 'helpcenter_helpcategories');
 			
 			// table
+
 			$table = new Table;
 			$table->construct_header($lang->helpcenter_name, array('width' => '30%'));
 			$table->construct_header($lang->helpcenter_description, array('width' => '40%'));
@@ -1654,6 +1668,7 @@ function helpcenter_admin()
 				$table->construct_cell(intval($category['docs']), array('class' => 'align_center'));
 				
 				// actions column
+
 				$table->construct_cell("<a href=\"index.php?module=tools-helpcenter&amp;action=editcategory&amp;cid=".intval($category['cid'])."\">".$lang->helpcenter_edit."</a> - <a href=\"index.php?module=tools-helpcenter&amp;action=do_deletecategory&amp;cid=".intval($category['cid'])."\">".$lang->helpcenter_delete."</a>", array('class' => 'align_center'));
 				
 				$table->construct_row();
@@ -1680,8 +1695,8 @@ function helpcenter_admin()
 	
 			$form_container->end();
 			
-			//$buttons = "";
-			//$submit_options = array('name' => 'save');
+			// buttons
+
 			$buttons = array();
 			$buttons[] = $form->generate_submit_button($lang->helpcenter_submit);
 			$buttons[] = $form->generate_reset_button($lang->helpcenter_reset);
@@ -1707,8 +1722,8 @@ function helpcenter_admin()
 			
 			$form_container->end();
 			
-			//$buttons = "";
-			//$submit_options = array('name' => 'save');
+			// buttons
+
 			$buttons = array();
 			$buttons[] = $form->generate_submit_button($lang->helpcenter_submit);
 			$buttons[] = $form->generate_reset_button($lang->helpcenter_reset);
@@ -1720,6 +1735,7 @@ function helpcenter_admin()
 			$page->output_nav_tabs($sub_tabs, 'helpcenter_ticketcategories');
 			
 			// table
+
 			$table = new Table;
 			$table->construct_header($lang->helpcenter_name, array('width' => '30%'));
 			$table->construct_header($lang->helpcenter_description, array('width' => '40%'));
@@ -1737,6 +1753,7 @@ function helpcenter_admin()
 				$table->construct_cell(intval($category['tickets']), array('class' => 'align_center'));
 				
 				// actions column
+
 				$table->construct_cell("<a href=\"index.php?module=tools-helpcenter&amp;action=editticketcategory&amp;cid=".intval($category['cid'])."\">".$lang->helpcenter_edit."</a> - <a href=\"index.php?module=tools-helpcenter&amp;action=do_deleteticketcategory&amp;cid=".intval($category['cid'])."\">".$lang->helpcenter_delete."</a>", array('class' => 'align_center'));
 				
 				$table->construct_row();
@@ -1763,8 +1780,8 @@ function helpcenter_admin()
 	
 			$form_container->end();
 			
-			//$buttons = "";
-			//$submit_options = array('name' => 'save');
+			// buttons
+
 			$buttons = array();
 			$buttons[] = $form->generate_submit_button($lang->helpcenter_submit);
 			$buttons[] = $form->generate_reset_button($lang->helpcenter_reset);
@@ -1790,8 +1807,8 @@ function helpcenter_admin()
 			
 			$form_container->end();
 			
-			//$buttons = "";
-			//$submit_options = array('name' => 'save');
+			// buttons
+			
 			$buttons = array();
 			$buttons[] = $form->generate_submit_button($lang->helpcenter_submit);
 			$buttons[] = $form->generate_reset_button($lang->helpcenter_reset);

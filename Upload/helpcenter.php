@@ -39,6 +39,7 @@ define('THIS_SCRIPT', 'helpcenter.php');
 define('IN_HELPCENTER', 1);
 
 // Templates used by Help Center
+
 $templatelist  = "helpcenter,helpcenter_regular,helpcenter_manager,helpcenter_do_action,helpcenter_regular_helpdocs_doc,helpcenter_regular,helpcenter_helpdocs_cat,helpcenter_manager_helpdocs_doc,helpcenter_helpdocs_regular,helpcenter_helpdocs_cats,helpcenter_manager_newdoc,helpcenter_manager_editdoc,helpcenter_do_action,helpcenter_supportteam,helpcenter_supportteam_group,helpcenter_warning,helpcenter,helpcenter_manager,helpcenter_manager_nav,helpcenter_nav,helpcenter_helpdocs_manager,helpcenter_not_found,helpcenter_regular_nav,helpcenter_manager_tickets_ticket,helpcenter_regular_submitticket,helpcenter_manager_tickets,helpcenter_regular_tickets,helpcenter_regular_tickets_ticket,helpcenter_helpdocs_viewdoc,helpcenter_regular_tickets,helpcenter_regular_tickets_ticket,helpcenter_viewticket,helpcenter_reply,";
 $templatelist .= "multipage_page_current,multipage_nextpage,multipage_page,multipage,multipage_prevpage,multipage_start,multipage_end"; // multi page templates
 
@@ -50,6 +51,7 @@ $parser = new postParser;
 $plugins->run_hooks("helpcenter_start");
 
 // load language
+
 $lang->load("helpcenter");
 
 if (!$mybb->user['uid'])
@@ -74,6 +76,7 @@ if ($mybb->settings['helpcenter_newtickets_enabled'] == 0)
 }
 
 // Add link in breadcrumb
+
 add_breadcrumb($lang->helpcenter, "helpcenter.php");
 
 if (!$mybb->input['action'])
@@ -81,13 +84,16 @@ if (!$mybb->input['action'])
 	if ($manager)
 	{
 		// Add link in breadcrumb
+
 		add_breadcrumb($lang->helpcenter_breadcrumb_manager, "helpcenter.php");
 	
 		// get total number of opened tickets
+
 		$query = $db->simple_select("helpcenter_tickets", "COUNT(*) as tickets", "opened=1");
 		$tickets['openedtickets'] = $db->fetch_field($query, 'tickets');
 		
 		// get total number of closed tickets
+
 		$query = $db->simple_select("helpcenter_tickets", "COUNT(*) as tickets", "opened=0");
 		$tickets['closedtickets'] = $db->fetch_field($query, 'tickets');
 		
@@ -97,13 +103,16 @@ if (!$mybb->input['action'])
 	else {
 	
 		// Add link in breadcrumb
+
 		add_breadcrumb($lang->helpcenter_breadcrumb_customer, "helpcenter.php");
 	
 		// get total number of opened tickets
+
 		$query = $db->simple_select("helpcenter_tickets", "COUNT(*) as tickets", "opened=1 AND uid='".$mybb->user['uid']."'");
 		$tickets['openedtickets'] = $db->fetch_field($query, 'tickets');
 		
 		// get total number of closed tickets
+
 		$query = $db->simple_select("helpcenter_tickets", "COUNT(*) as tickets", "opened=0 AND uid='".$mybb->user['uid']."'");
 		$tickets['closedtickets'] = $db->fetch_field($query, 'tickets');
 		
@@ -121,9 +130,11 @@ elseif ($mybb->input['action'] == 'myopened' || $mybb->input['action'] == 'myclo
 	if ($mybb->input['action'] == 'myopened')
 	{
 		// Add link in breadcrumb
+
 		add_breadcrumb($lang->helpcenter_breadcrumb_mytickets, "helpcenter.php?action=myopened");
 	
 		// get total number of opened tickets
+
 		$query = $db->simple_select("helpcenter_tickets", "COUNT(*) as tickets", "opened='1' AND uid='".$mybb->user['uid']."'");
 		$total_tickets = $db->fetch_field($query, 'tickets');
 		$opened = 1;
@@ -133,9 +144,11 @@ elseif ($mybb->input['action'] == 'myopened' || $mybb->input['action'] == 'myclo
 	elseif ($mybb->input['action'] == 'myclosed')
 	{
 		// Add link in breadcrumb
+
 		add_breadcrumb($lang->helpcenter_breadcrumb_mytickets, "helpcenter.php?action=myclosed");
 	
 		// get total number of closed tickets
+
 		$query = $db->simple_select("helpcenter_tickets", "COUNT(*) as tickets", "opened='0' AND uid='".$mybb->user['uid']."'");
 		$total_tickets = $db->fetch_field($query, 'tickets');
 		$opened = 0;
@@ -151,6 +164,7 @@ elseif ($mybb->input['action'] == 'myopened' || $mybb->input['action'] == 'myclo
 		$extra = '';
 	
 	// pagination
+
 	$per_page = 15;
 	$mybb->input['page'] = intval($mybb->input['page']);
 	if($mybb->input['page'] && $mybb->input['page'] > 1)
@@ -209,9 +223,11 @@ elseif ($mybb->input['action'] == 'manage_opened' || $mybb->input['action'] == '
 	if ($mybb->input['action'] == 'manage_opened')
 	{
 		// Add link in breadcrumb
+
 		add_breadcrumb($lang->helpcenter_breadcrumb_manage_tickets, "helpcenter.php?action=manage_opened");
 	
 		// get total number of opened tickets
+
 		$query = $db->simple_select("helpcenter_tickets", "COUNT(*) as tickets", "opened='1'");
 		$total_tickets = $db->fetch_field($query, 'tickets');
 		$opened = 1;
@@ -221,9 +237,11 @@ elseif ($mybb->input['action'] == 'manage_opened' || $mybb->input['action'] == '
 	elseif ($mybb->input['action'] == 'manage_closed')
 	{
 		// Add link in breadcrumb
+
 		add_breadcrumb($lang->helpcenter_breadcrumb_manage_tickets, "helpcenter.php?action=manage_closed");
 	
 		// get total number of closed tickets
+
 		$query = $db->simple_select("helpcenter_tickets", "COUNT(*) as tickets", "opened='0'");
 		$total_tickets = $db->fetch_field($query, 'tickets');
 		$opened = 0;
@@ -239,6 +257,7 @@ elseif ($mybb->input['action'] == 'manage_opened' || $mybb->input['action'] == '
 		$extra = '';
 	
 	// pagination
+
 	$per_page = 15;
 	$mybb->input['page'] = intval($mybb->input['page']);
 	if($mybb->input['page'] && $mybb->input['page'] > 1)
@@ -253,6 +272,7 @@ elseif ($mybb->input['action'] == 'manage_opened' || $mybb->input['action'] == '
 	}
 	
 	// multi-page
+
 	if ($total_tickets > $per_page)
 		$multipage = multipage($total_tickets, $per_page, $mybb->input['page'], $mybb->settings['bburl']."/helpcenter.php?action=".htmlspecialchars_uni($mybb->input['action']));
 	
@@ -277,6 +297,7 @@ elseif ($mybb->input['action'] == 'manage_opened' || $mybb->input['action'] == '
 		$ticket['date'] = my_date($mybb->settings['dateformat'], $ticket['date'], '', false).", ".my_date($mybb->settings['timeformat'], $ticket['date']);
 		
 		// action
+
 		if ($opened)
 		{
 			$ticket['action'] = "<a href=\"{$mybb->settings['bburl']}/helpcenter.php?action=closeticket&amp;tid={$ticket['tid']}\">".$lang->helpcenter_close."</a> - <a href=\"".$mybb->settings['bburl']."/helpcenter.php?action=deleteticket&amp;tid=".$ticket['tid']."\">".$lang->helpcenter_delete."</a>";
@@ -303,6 +324,7 @@ elseif ($mybb->input['action'] == 'manage_opened' || $mybb->input['action'] == '
 elseif ($mybb->input['action'] == 'supportteam')
 {
 	// Add link in breadcrumb
+
 	add_breadcrumb($lang->helpcenter_breadcrumb_support_team, "helpcenter.php?action=supportteam");
 
 	$usergroups = explode(',', $mybb->settings['helpcenter_modgroups']);
@@ -321,6 +343,7 @@ elseif ($mybb->input['action'] == 'supportteam')
 		$gid = $group;
 		
 		// get users that belong to this group
+
 		$total_rows = 0;
 		
 		$shownleaderssep = $shownregularsep = false;
@@ -338,6 +361,7 @@ elseif ($mybb->input['action'] == 'supportteam')
 		$search_sql .= " (usergroup='{$gid}' {$additional_sql})";
 		
 		// total users
+
 		$total_rows = $db->fetch_field($db->simple_select("users", "COUNT(uid) as users", $search_sql), "users");
 		
 		$users = array();
@@ -345,6 +369,7 @@ elseif ($mybb->input['action'] == 'supportteam')
 		$sep = '';
 		
 		// get group members
+
 		$query = $db->simple_select("users", "*",$search_sql);
 		while ($user = $db->fetch_array($query))
 		{
@@ -382,6 +407,7 @@ elseif ($mybb->input['action'] == 'supportteam')
 elseif ($mybb->input['action'] == 'helpdocs')
 {
 	// Add link in breadcrumb
+
 	add_breadcrumb($lang->helpcenter_breadcrumb_help_docs, "helpcenter.php?action=helpdocs");
 
 	if ($mybb->settings['helpcenter_docs_enabled'] == 0)
@@ -390,7 +416,9 @@ elseif ($mybb->input['action'] == 'helpdocs')
 	}
 	
 	$cid = intval($mybb->input['cid']);
+
 	// show categories as we haven't selected one yet
+
 	if (!$cid)
 	{
 		$helpcats = '';
@@ -414,7 +442,9 @@ elseif ($mybb->input['action'] == 'helpdocs')
 		
 		eval("\$cptable = \"".$templates->get("helpcenter_helpdocs_cats")."\";");
 	}
+
 	// we are browsing a category
+
 	else {
 		$query = $db->simple_select("helpcenter_docs_cat", '*', 'cid='.$cid);
 		$cat = $db->fetch_array($query);
@@ -465,6 +495,7 @@ elseif ($mybb->input['action'] == 'helpdocs')
 elseif ($mybb->input['action'] == 'createdoc')
 {
 	// Add link in breadcrumb
+
 	add_breadcrumb($lang->helpcenter_breadcrumb_create_doc, "helpcenter.php?action=createdoc");
 
 	if (!$manager)
@@ -544,6 +575,7 @@ elseif ($mybb->input['action'] == 'do_createdoc')
 elseif ($mybb->input['action'] == 'editdoc')
 {
 	// Add link in breadcrumb
+
 	add_breadcrumb($lang->helpcenter_breadcrumb_edit_doc, "helpcenter.php?action=editdoc");
 
 	if (!$manager)
@@ -645,6 +677,7 @@ elseif ($mybb->input['action'] == 'do_editdoc')
 elseif ($mybb->input['action'] == 'deletedoc')
 {
 	// Add link in breadcrumb
+
 	add_breadcrumb($lang->helpcenter_breadcrumb_delete_doc, "helpcenter.php?action=deletedoc");
 
 	if (!$manager)
@@ -697,6 +730,7 @@ elseif ($mybb->input['action'] == 'do_deletedoc')
 elseif ($mybb->input['action'] == 'viewdoc')
 {
 	// Add link in breadcrumb
+
 	add_breadcrumb($lang->helpcenter_breadcrumb_view_doc, "helpcenter.php?action=viewdoc");
 
 	if ($mybb->settings['helpcenter_docs_enabled'] == 0)
@@ -742,6 +776,7 @@ elseif ($mybb->input['action'] == 'viewdoc')
 elseif ($mybb->input['action'] == 'submitticket')
 {
 	// Add link in breadcrumb
+
 	add_breadcrumb($lang->helpcenter_breadcrumb_submit_ticket, "helpcenter.php?action=submitticket");
 
 	//if ($manager) // managers cannot submit tickets
@@ -865,6 +900,7 @@ elseif ($mybb->input['action'] == 'do_submitticket')
 elseif ($mybb->input['action'] == 'closeticket')
 {
 	// Add link in breadcrumb
+
 	add_breadcrumb($lang->helpcenter_breadcrumb_close_ticket, "helpcenter.php?action=closeticket");
 
 	if (!$manager)
@@ -911,6 +947,7 @@ elseif ($mybb->input['action'] == 'do_closeticket')
 elseif ($mybb->input['action'] == 'openticket')
 {
 	// Add link in breadcrumb
+
 	add_breadcrumb($lang->helpcenter_breadcrumb_open_ticket, "helpcenter.php?action=openticket");
 
 	if (!$manager)
@@ -957,6 +994,7 @@ elseif ($mybb->input['action'] == 'do_openticket')
 elseif ($mybb->input['action'] == 'deleteticket')
 {
 	// Add link in breadcrumb
+
 	add_breadcrumb($lang->helpcenter_breadcrumb_delete_ticket, "helpcenter.php?action=deleteticket");
 
 	if (!$manager)
@@ -1001,6 +1039,7 @@ elseif ($mybb->input['action'] == 'do_deleteticket')
 elseif ($mybb->input['action'] == 'viewticket')
 {
 	// Add link in breadcrumb
+
 	add_breadcrumb($lang->helpcenter_breadcrumb_view_ticket, "helpcenter.php?action=viewticket");
 	
 	$tid = intval($mybb->input['tid']);
@@ -1124,6 +1163,7 @@ elseif ($mybb->input['action'] == 'do_reply')
 	$db->update_query('helpcenter_tickets', array('messages' => $ticket['messages']+1), 'tid=\''.$ticket['tid'].'\'');
 
 	// inform author about the new reply if we are not the author
+
 	if ($manager)
 	{
 		helpcenter_send_pm(array('receivepms' => 1, 'subject' => $lang->helpcenter_send_pm_newreply_title, 'message' => $lang->sprintf($lang->helpcenter_send_pm_newreply, $mybb->user['username'], $ticket['tid'], $ticket['name']), 'touid' => $ticket['uid']), -1);
@@ -1139,7 +1179,9 @@ elseif ($mybb->input['action'] == 'do_deletereply')
 	verify_post_check($mybb->input['my_post_key']);
 
 	$mid = intval($mybb->input['mid']);
+
 	// get reply from database (mid must exist and it must not be the message of the ticket)
+
 	$reply = $db->fetch_array($db->simple_select('helpcenter_messages', '*', "mid = $mid AND first=0"));
 	if (!$reply)
 		error($lang->helpcenter_invalid_reply);
@@ -1155,6 +1197,7 @@ else
 	error();
 
 // get our downloads page
+
 eval("\$helpcenter = \"".$templates->get("helpcenter")."\";");
 
 $plugins->run_hooks("helpcenter_end");
