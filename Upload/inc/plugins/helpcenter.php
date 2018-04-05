@@ -801,6 +801,41 @@ function helpcenter_activate()
 		"tid" => "0",
 		"title" => "helpcenter_helpdocs_viewdoc",
 		"template" => $db->escape_string('
+<style>
+	.edit_delete_buttons {
+    display:inline-block;
+	}
+	.delete_button {
+	padding: 3px 8px;
+	cursor: pointer;
+	font-family: Tahoma, Verdana, Arial, Sans-Serif;
+	font-size: 13px;
+	background: #eee url(images/buttons_bg.png) repeat-x;
+	border: 1px solid #bbb;
+	color: #333;
+	outline: 0;
+	float: right;
+	-moz-border-radius: 6px;
+	-webkit-border-radius: 6px;
+	border-radius: 6px;
+	margin-left: 1px;
+	}
+	.edit_button {
+	padding: 3px 8px;
+	cursor: pointer;
+	font-family: Tahoma, Verdana, Arial, Sans-Serif;
+	font-size: 13px;
+	background: #eee url(images/buttons_bg.png) repeat-x;
+	border: 1px solid #bbb;
+	color: #333;
+	outline: 0;
+	float: left;
+    -moz-border-radius: 6px;
+	-webkit-border-radius: 6px;
+	border-radius: 6px;
+	margin-right: 1px;
+	}
+</style>
 <table border="0" cellspacing="{$theme[\'borderwidth\']}" cellpadding="{$theme[\'tablespace\']}" class="tborder">
 <tr>
 <td class="thead" colspan="2"><strong>{$lang->helpcenter} - {$doc[\'title\']}</strong></td>
@@ -814,7 +849,7 @@ function helpcenter_activate()
 <td class="trow2" width="80%">{$doc[\'content\']}</td>
 </tr>
 <tr>
-<td class="tfoot" colspan="2" align="center"><a href="{$mybb->settings[\'bburl\']}/helpcenter.php?action=deletedoc&amp;did={$doc[\'did\']}">{$lang->helpcenter_delete}</a> - <a href="{$mybb->settings[\'bburl\']}/helpcenter.php?action=editdoc&amp;did={$doc[\'did\']}">{$lang->helpcenter_edit}</a>
+<td class="tfoot" colspan="2" align="center"><div class="edit_delete_buttons"><a href="{$mybb->settings[\'bburl\']}/helpcenter.php?action=editdoc&amp;did={$doc[\'did\']}"><div class="edit_button">{$lang->helpcenter_edit}</div></a><a href="{$mybb->settings[\'bburl\']}/helpcenter.php?action=deletedoc&amp;did={$doc[\'did\']}"><div class="delete_button">{$lang->helpcenter_delete}</div></a></div>
 </td>
 </tr>
 </table>'),
