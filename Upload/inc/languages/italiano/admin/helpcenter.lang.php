@@ -14,7 +14,7 @@
  *
  *  MyBB Version: 1.8
  *
- *  Plugin Version: 1.7
+ *  Plugin Version: 1.8
  *
  ***************************************************************************/
 
@@ -40,7 +40,7 @@ $l['helpcenter_Desc'] = 'Aggiunge un potente Centro assistenza a MyBB.';
 $l['helpcenter_Web'] = 'http://mybb-plugins.com';
 $l['helpcenter_Auth'] = 'Pirata Nervo & updated by Vintagedaddyo';
 $l['helpcenter_AuthSite'] = 'http://community.mybb.com/user-6029.html';
-$l['helpcenter_Ver'] = '1.7';
+$l['helpcenter_Ver'] = '1.8';
 $l['helpcenter_Compat'] = '18*';
 
 
@@ -198,5 +198,8 @@ $l['helpcenter_ticketcategory_edited'] = 'La categoria selezionata è stata modi
 // Ticket Categories - Delete
 $l['helpcenter_ticketcategory_deleted'] = 'La categoria selezionata è stata cancellata con successo.';
 $l['helpcenter_confirm_deleteticketcategory'] = 'Sei sicuro di voler eliminare la categoria selezionata? Tutti i biglietti all\'interno di questa categoria verranno eliminati e questo processo NON PU CAN essere annullato!';
+
+// Ticket Category - Cid
+$l['helpcenter_ticket_category'] = 'Categoria';
 
 ?>

@@ -14,7 +14,7 @@
  *
  *  MyBB Version: 1.8
  *
- *  Plugin Version: 1.7
+ *  Plugin Version: 1.8
  *
  ***************************************************************************/
  
@@ -689,11 +689,14 @@ function helpcenter_activate()
 
 <tr>
 <td class="{$bgcolor}" width="20%">{$ticket[\'username\']}</td>
-<td class="{$bgcolor}" width="25%">{$ticket[\'title\']}</td>
+<td class="{$bgcolor}" width="20%">{$ticket[\'title\']}</td>
+<!-- add cid start -->	
+<td class="{$bgcolor}" width="10%" align="center">{$ticket[\'cid\']}</td>	
+<!-- add cid end -->
 <td class="{$bgcolor}" width="10%" align="center">{$ticket[\'replies\']}</td>
-<td class="{$bgcolor}" width="15%" align="center">{$ticket[\'priority\']}</td>
-<td class="{$bgcolor}" width="15%" align="center">{$ticket[\'date\']}</td>
-<td class="{$bgcolor}" width="15%" align="center">{$ticket[\'action\']}</td>
+<td class="{$bgcolor}" width="10%" align="center">{$ticket[\'priority\']}</td>
+<td class="{$bgcolor}" width="20%" align="center">{$ticket[\'date\']}</td>
+<td class="{$bgcolor}" width="10%" align="center">{$ticket[\'action\']}</td>
 </tr>'),
 		"sid" => "-1",
 	);
@@ -750,11 +753,14 @@ function helpcenter_activate()
 </tr>
 <tr>
 <td class="tcat" width="20%"><strong>{$lang->helpcenter_username}</strong></td>
-<td class="tcat" width="25%"><strong>{$lang->helpcenter_title}</strong></td>
+<td class="tcat" width="20%"><strong>{$lang->helpcenter_title}</strong></td>
+<!-- add cid start -->
+<td class="tcat" width="10%" align="center"><strong>{$lang->helpcenter_ticket_category}</strong></td>
+<!-- add cid end -->	
 <td class="tcat" width="10%" align="center"><strong>{$lang->helpcenter_replies}</strong></td>
-<td class="tcat" width="15%" align="center"><strong>{$lang->helpcenter_priority}</strong></td>
-<td class="tcat" width="15%" align="center"><strong>{$lang->helpcenter_date}</strong></td>
-<td class="tcat" width="15%" align="center"><strong>{$lang->helpcenter_action}</strong></td>
+<td class="tcat" width="10%" align="center"><strong>{$lang->helpcenter_priority}</strong></td>
+<td class="tcat" width="20%" align="center"><strong>{$lang->helpcenter_date}</strong></td>
+<td class="tcat" width="10%" align="center"><strong>{$lang->helpcenter_action}</strong></td>
 </tr>
 {$tickets}
 </table>'),
@@ -772,9 +778,12 @@ function helpcenter_activate()
 <td class="thead" colspan="5"><strong>{$lang->helpcenter} - {$lang->helpcenter_tickets}</strong></td>
 </tr>
 <tr>
-<td class="tcat" width="55%"><strong>{$lang->helpcenter_title}</strong></td>
+<td class="tcat" width="50%"><strong>{$lang->helpcenter_title}</strong></td>
+<!-- add cid start -->	
+<td class="tcat" width="10%" align="center"><strong>{$lang->helpcenter_ticket_category}</strong></td>
+<!-- add cid end -->
 <td class="tcat" width="10%" align="center"><strong>{$lang->helpcenter_replies}</strong></td>
-<td class="tcat" width="15%" align="center"><strong>{$lang->helpcenter_priority}</strong></td>
+<td class="tcat" width="10%" align="center"><strong>{$lang->helpcenter_priority}</strong></td>
 <td class="tcat" width="20%" align="center"><strong>{$lang->helpcenter_date}</strong></td>
 </tr>
 {$tickets}
@@ -788,9 +797,12 @@ function helpcenter_activate()
 		"title" => "helpcenter_regular_tickets_ticket",
 		"template" => $db->escape_string('
 <tr>
-<td class="{$bgcolor}" width="55%">{$ticket[\'title\']}</td>
+<td class="{$bgcolor}" width="50%">{$ticket[\'title\']}</td>
+<!-- add cid start -->
+<td class="{$bgcolor}" width="10%" align="center">{$ticket[\'cid\']}</td>		
+<!-- add cid end -->
 <td class="{$bgcolor}" width="10%" align="center">{$ticket[\'replies\']}</td>
-<td class="{$bgcolor}" width="15%" align="center">{$ticket[\'priority\']}</td>
+<td class="{$bgcolor}" width="10%" align="center">{$ticket[\'priority\']}</td>
 <td class="{$bgcolor}" width="20%" align="center">{$ticket[\'date\']}</td>
 </tr>'),
 		"sid" => "-1",
@@ -1772,8 +1784,12 @@ function helpcenter_admin()
 			// table
 
 			$table = new Table;
-			$table->construct_header($lang->helpcenter_name, array('width' => '30%'));
-			$table->construct_header($lang->helpcenter_description, array('width' => '40%'));
+			$table->construct_header($lang->helpcenter_name, array('width' => '25%'));
+			$table->construct_header($lang->helpcenter_description, array('width' => '35%'));
+
+			// add cid
+			$table->construct_header($lang->helpcenter_ticket_category, array('width' => '10%', 'class' => 'align_center'));	
+
 			$table->construct_header($lang->helpcenter_tickets, array('width' => '10%', 'class' => 'align_center'));
 			$table->construct_header($lang->helpcenter_action, array('width' => '20%', 'class' => 'align_center'));
 			
@@ -1785,6 +1801,10 @@ function helpcenter_admin()
 					
 				$table->construct_cell(htmlspecialchars_uni($category['name']));
 				$table->construct_cell(htmlspecialchars_uni($category['description']));
+
+                //add cid
+				$table->construct_cell(intval($category['cid']), array('class' => 'align_center'));
+
 				$table->construct_cell(intval($category['tickets']), array('class' => 'align_center'));
 				
 				// actions column

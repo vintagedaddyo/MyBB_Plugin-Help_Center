@@ -5,6 +5,13 @@ Website: http://mybb-plugins.com
 
 License: license.txt
 
+
+* Updated to 1.8 for MyBB 1.8.x 
+
+by:  Vintagedaddyo: http://community.mybb.com/user-6029.html
+
+- minor changes to add category id display to ticket open/close listing as per user request here: https://community.mybb.com/thread-221511.html
+
 * Updated to 1.7 for MyBB 1.8.x 
 
 by:  Vintagedaddyo: http://community.mybb.com/user-6029.html
@@ -76,6 +83,9 @@ Upload contents of the Upload folder to the root of your MyBB installation, over
 Done!
 
 ------ Change Log
+ * 1.8 by: Vintagedaddyo
+Minor changes to add cid display to ticket listing.
+
  * 1.7 by: Vintagedaddyo
 Fixed a few minor issues.
 Updated version to work with later 1.8.x
