@@ -931,6 +931,10 @@ function helpcenter_activate()
 <td class="thead" colspan="2"><strong>{$lang->helpcenter_info}</strong></td>
 </tr>
 <tr>
+<td class="trow1" width="50%"><strong>{$lang->helpcenter_ticket_category}:</strong></td>
+<td class="trow1" width="50%">{$ticket[\'cid\']}</td>
+</tr>
+<tr>
 <td class="trow1" width="50%"><strong>{$lang->helpcenter_author}:</strong></td>
 <td class="trow1" width="50%">{$ticket[\'author\']}</td>
 </tr>
