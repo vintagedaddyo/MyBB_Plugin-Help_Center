@@ -5,6 +5,9 @@ Website: http://mybb-plugins.com
 
 License: license.txt
 
+* 1.8 further localization support
+
+- arabic
 
 * Updated to 1.8 for MyBB 1.8.x 
 
